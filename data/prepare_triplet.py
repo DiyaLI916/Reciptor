@@ -202,7 +202,6 @@ def prepare_sparql_query():
                 print('save new remain url', len(url_ls))
 
         print(len(url_ls))
-        # exit()
     return 0
 
 prepare_sparql_query()
