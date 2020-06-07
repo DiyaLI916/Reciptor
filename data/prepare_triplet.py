@@ -194,7 +194,6 @@ def prepare_sparql_query():
             out_file.write(neg_line)
 
         iteration += 1
-
         print('iteration', iteration)
         if iteration % 100 == 0:
             with open('remain_url.json', 'w') as out_file:
@@ -202,6 +201,7 @@ def prepare_sparql_query():
                 print('save new remain url', len(url_ls))
 
         print(len(url_ls))
+        # exit()
     return 0
 
 prepare_sparql_query()
