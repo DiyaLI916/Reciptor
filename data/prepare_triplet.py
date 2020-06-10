@@ -301,7 +301,6 @@ def prepare_sparql_query():
 
             # exit()
         print(len(url_ls))
-
     return 0
 
 prepare_sparql_query()
