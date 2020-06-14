@@ -1,10 +1,12 @@
 # Reciptor
 This repository contains the code to train and evaluate models from the paper:  
 Reciptor: An Effective Pretrained Model for Recipe Representation Learning.
-
+# Requirements
+```shell
+pip install -r requirements.txt
+```
 # Data
-## Prepare Training Data
-To run the recipe representation model:
+To prepare training data:
 ```shell
 python prepare_dataset.py
 ```
