@@ -22,7 +22,7 @@ To evaluate the pretrained recipe embeddings:
 ```shell
 bash run_evaluation.sh
 ```
-#Credit
+# Credit
 The backbone of this framework is based on [torralba-lab/im2recipe-Pytorch](https://github.com/torralba-lab/im2recipe-Pytorch)
 
 The implementation of Set Transforme is based on [jadore801120/attention-is-all-you-need-pytorch](https://github.com/TropComplique/set-transformer).
