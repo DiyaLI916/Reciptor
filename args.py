@@ -59,7 +59,7 @@ def get_parser():
     parser.add_argument('--dataset', default='data/', type=str)
     parser.add_argument('--sthdir', default='data/', type=str)
 
-    ## for new classification task
+    ## for classification task
     parser.add_argument("--pretrained_embed_path", default='', type=str)
     parser.add_argument("--hidden_dropout_prob", default='0.1', type=float)
     parser.add_argument("--do_test", default=False, type=bool)
