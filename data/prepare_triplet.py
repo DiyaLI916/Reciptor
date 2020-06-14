@@ -1,7 +1,6 @@
 import json
 import os
 import random
-#<http://idea.rpi.edu/heals/kb/recipe/84ae24b2-Vanilla%20Wafer%20Cake>
 query_delete_recipe = '''
 DELETE WHERE {
   GRAPH ?g { <http://idea.rpi.edu/heals/kb/recipe/84ae24b2-Vanilla%20Wafer%20Cake> ?o ?s }
@@ -53,7 +52,8 @@ where{
 triplet_ls = []
 foodcom = {}
 url_ls = []
-with open('../../Pycharm/im2recipe-Pytorch/data/recipe1M/foodcom_light.json') as json_file:
+
+with open('foodcom_light.json') as json_file:
     data = json.load(json_file)
     for record in data:
         if record['url'] not in foodcom.keys():
