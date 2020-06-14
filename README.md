@@ -15,8 +15,10 @@ Please make sure you have downloaded
 * `data/encs_train_1024.t7`: Skip-instructions train partition
 * `data/encs_val_1024.t7`: Skip-instructions val partition
 * `data/encs_test_1024.t7`: Skip-instructions test partition
+
 from the original [recipe1M](http://im2recipe.csail.mit.edu/dataset/download/) and put them under their corresponding folders.
 
+Or you can download our preprocessed data from .
 # Model
 To run the recipe representation model:
 ```shell
