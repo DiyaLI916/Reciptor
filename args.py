@@ -55,9 +55,9 @@ def get_parser():
 
     # dataset
     parser.add_argument('--maxlen', default=167, type=int)
-    parser.add_argument('--vocab', default='../data/text/vocab.txt', type=str)
-    parser.add_argument('--dataset', default='../data/recipe1M/', type=str)
-    parser.add_argument('--sthdir', default='../data/', type=str)
+    parser.add_argument('--vocab', default='data/text/vocab.txt', type=str)
+    parser.add_argument('--dataset', default='data/', type=str)
+    parser.add_argument('--sthdir', default='data/', type=str)
 
     ## for new classification task
     parser.add_argument("--pretrained_embed_path", default='', type=str)
