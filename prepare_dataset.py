@@ -75,7 +75,6 @@ with open('data/classes_foodcom.pkl', 'rb') as f:
     class_dict = pickle.load(f)
     # id2class label (9: 8 + 1)
     id2class = pickle.load(f)
-    print(len(class_dict), id2class)
 
 with open('data/triplet_sample.txt') as sample:
     sample_ids = []

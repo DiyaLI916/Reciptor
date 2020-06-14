@@ -18,7 +18,7 @@ Please make sure you have downloaded
 
 from the original [recipe1M](http://im2recipe.csail.mit.edu/dataset/download/) and put them under their corresponding folders.
 
-## Download Preprocessed Data
+## Download preprocessed data
 Alternatively, you can download our preprocessed data from [reciptor_data](https://drive.google.com/drive/folders/19isPZOMiBA-hA4WoTJbjhX1SmYmgmUZA?usp=sharing).
 
 # Model
