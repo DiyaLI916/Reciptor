@@ -2,7 +2,6 @@
 import random
 import pickle
 import numpy as np
-from proc import detect_ingrs
 from tqdm import *
 import torchfile
 import utils
@@ -14,6 +13,33 @@ import sys
 import json
 sys.path.append("..")
 from args import get_parser
+
+def detect_ingrs(recipe, vocab):
+    try:
+        ingr_names = [ingr['text'] for ingr in recipe['ingredients'] if ingr['text']]
+    except:
+        ingr_names = []
+        print("Could not load ingredients! Moving on...")
+
+    detected = set()
+    # print(ingr_names)
+
+    for name in ingr_names:
+        name = name.replace(' ', '_')
+        name_ind = vocab.get(name)
+        # print(name_ind, '---', name)
+        if name_ind:
+            detected.add(name_ind)
+        '''
+        name_words = name.lower().split(' ')
+        for i in xrange(len(name_words)):
+            name_ind = vocab.get('_'.join(name_words[i:]))
+            if name_ind:
+                detected.add(name_ind)
+                break
+        '''
+    # print(detected)
+    return list(detected) + [vocab['</i>']]
 
 def get_st(file):
     info = torchfile.load(file)
@@ -56,11 +82,8 @@ stid2idx = {'train': {}, 'val': {}, 'test': {}}
 for part in ['train', 'val', 'test']:
     for i, id in enumerate(st_vecs[part]['ids']):
         stid2idx[part][id] = i
-
 print("Done loading instruction vectors.", time.time() - t)
 
-# print(stid2idx)
-# exit()
 
 print('Loading dataset.')
 # print DATASET
@@ -152,10 +175,8 @@ for i, entry in tqdm(enumerate(dataset)):
             txn.put('{}'.format(entry['id']).encode('latin1'), serialized_sample)
         # keys to be saved in a pickle file
         keys[partition].append(entry['id'])
-        # exit()
 
 print('maxlength', maxlength)
-# exit()
 for k in keys.keys():
     with open('../data/{}_foodcom_sample_keys.pkl'.format(k), 'wb') as f:
         pickle.dump(keys[k], f)
