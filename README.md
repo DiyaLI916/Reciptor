@@ -42,6 +42,6 @@ bash run_evaluation.sh
 # Credit
 The backbone of this framework is based on [torralba-lab/im2recipe-Pytorch](https://github.com/torralba-lab/im2recipe-Pytorch)
 
-The implementation of Set Transformer is based on [jadore801120/attention-is-all-you-need-pytorch](https://github.com/TropComplique/set-transformer).
+The implementation of Set Transformer is based on [TropComplique/set-transformer](https://github.com/TropComplique/set-transformer).
 
 # Reference
