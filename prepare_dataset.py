@@ -4,7 +4,6 @@ import pickle
 import numpy as np
 from tqdm import *
 import torchfile
-import utils
 import os
 import time
 import lmdb
@@ -43,9 +42,7 @@ def detect_ingrs(recipe, vocab):
 
 def get_st(file):
     info = torchfile.load(file)
-
     ids = info[b'ids']
-    # print(info)
 
     imids = []
     for i, id in enumerate(ids):
@@ -83,7 +80,6 @@ for part in ['train', 'val', 'test']:
     for i, id in enumerate(st_vecs[part]['ids']):
         stid2idx[part][id] = i
 print("Done loading instruction vectors.", time.time() - t)
-
 
 print('Loading dataset.')
 # print DATASET
@@ -129,7 +125,7 @@ keys = {'train': [], 'val': [], 'test': []}
 
 maxlength = 0
 
-with open('foodcom_dataset.json') as json_file:
+with open('data/foodcom_dataset.json') as json_file:
     dataset = json.load(json_file)
 
 id_count = 0

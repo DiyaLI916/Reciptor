@@ -16,10 +16,11 @@ Please make sure you have downloaded
 * `data/encs_val_1024.t7`: Skip-instructions val partition
 * `data/encs_test_1024.t7`: Skip-instructions test partition
 
-from the original [recipe1M](http://im2recipe.csail.mit.edu/dataset/download/) and put them under their corresponding folders.
+from the original [recipe1M](http://im2recipe.csail.mit.edu/dataset/download/) and put them under their corresponding folders and downloaded
+* `data/foodcom_dataset.json` from [foodcom_datatset.json](https://drive.google.com/file/d/10DdbPjDYjcY-uFXGAFv9hBHqYyroFW8p/view?usp=sharing)
 
 ## Download preprocessed data
-Alternatively, you can download our preprocessed data from [reciptor_data](https://drive.google.com/drive/folders/19isPZOMiBA-hA4WoTJbjhX1SmYmgmUZA?usp=sharing).
+Alternatively, you can download our preprocessed data from [reciptor_data](https://drive.google.com/drive/folders/19isPZOMiBA-hA4WoTJbjhX1SmYmgmUZA?usp=sharing)
 
 # Model
 To run the recipe representation model:
