@@ -28,7 +28,7 @@ bash run_foodcom_reciptor.sh
 ```
 The model will be saved in `--snapshots` path.
 
-Notice: to run the baseline models (jm, sjm) described in our paper, please change `--model_type` to `jm|sjm` accordingly.
+* Notice: to run the baseline models (jm, sjm) described in our paper, please change `--model_type` to `jm|sjm` accordingly.
 
 To store the pretrained recipe embeddings:
 ```shell
