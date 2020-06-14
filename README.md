@@ -6,6 +6,7 @@ Reciptor: An Effective Pretrained Model for Recipe Representation Learning.
 pip install -r requirements.txt
 ```
 # Data
+## Data preparation
 To prepare training data from scratch, run:
 ```shell
 python prepare_dataset.py
@@ -18,7 +19,9 @@ Please make sure you have downloaded
 
 from the original [recipe1M](http://im2recipe.csail.mit.edu/dataset/download/) and put them under their corresponding folders.
 
-Or you can download our preprocessed data from .
+## Data preparation
+Alternatively, you can download our preprocessed data from [foodcom_data](https://drive.google.com/drive/folders/19isPZOMiBA-hA4WoTJbjhX1SmYmgmUZA?usp=sharing).
+
 # Model
 To run the recipe representation model:
 ```shell
