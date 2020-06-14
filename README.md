@@ -12,14 +12,13 @@ To prepare training data from scratch, run:
 python prepare_dataset.py
 ```
 Please make sure you have downloaded 
-* `data/text/vocab.bin`: ingredient Word2Vec
 * `data/encs_train_1024.t7`: Skip-instructions train partition
 * `data/encs_val_1024.t7`: Skip-instructions val partition
 * `data/encs_test_1024.t7`: Skip-instructions test partition
 
 from the original [recipe1M](http://im2recipe.csail.mit.edu/dataset/download/) and put them under their corresponding folders.
 
-## Data preparation
+## Download Preprocessed Data
 Alternatively, you can download our preprocessed data from [reciptor_data](https://drive.google.com/drive/folders/19isPZOMiBA-hA4WoTJbjhX1SmYmgmUZA?usp=sharing).
 
 # Model
