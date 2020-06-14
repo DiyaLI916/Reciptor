@@ -34,7 +34,7 @@ To store the pretrained recipe embeddings:
 bash run_store_embed.sh
 ```
 # Evaluation
-To evaluate the pretrained recipe embeddings:
+To evaluate the pretrained recipe embeddings on category classification task:
 ```shell
 bash run_evaluation.sh
 ```
