@@ -6,10 +6,17 @@ Reciptor: An Effective Pretrained Model for Recipe Representation Learning.
 pip install -r requirements.txt
 ```
 # Data
-To prepare training data:
+To prepare training data from scratch, run:
 ```shell
 python prepare_dataset.py
 ```
+Please make sure you have downloaded 
+* `data/text/vocab.bin`: ingredient Word2Vec
+* `data/encs_train_1024.t7`: Skip-instructions train partition
+* `data/encs_val_1024.t7`: Skip-instructions val partition
+* `data/encs_test_1024.t7`: Skip-instructions test partition
+from the original [recipe1M](http://im2recipe.csail.mit.edu/dataset/download/) and put them under their corresponding folders.
+
 # Model
 To run the recipe representation model:
 ```shell
