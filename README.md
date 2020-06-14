@@ -20,7 +20,7 @@ Please make sure you have downloaded
 from the original [recipe1M](http://im2recipe.csail.mit.edu/dataset/download/) and put them under their corresponding folders.
 
 ## Data preparation
-Alternatively, you can download our preprocessed data from [foodcom_data](https://drive.google.com/drive/folders/19isPZOMiBA-hA4WoTJbjhX1SmYmgmUZA?usp=sharing).
+Alternatively, you can download our preprocessed data from [reciptor_data](https://drive.google.com/drive/folders/19isPZOMiBA-hA4WoTJbjhX1SmYmgmUZA?usp=sharing).
 
 # Model
 To run the recipe representation model:
