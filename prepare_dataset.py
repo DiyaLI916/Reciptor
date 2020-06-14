@@ -5,10 +5,8 @@ import numpy as np
 from proc import detect_ingrs
 from tqdm import *
 import torchfile
-import time
 import utils
 import os
-# from ..args import get_parser
 import time
 import lmdb
 import shutil
@@ -73,13 +71,13 @@ with open(opts.vocab) as f_vocab:
     ingr_vocab = {w.rstrip(): i+2 for i, w in enumerate(f_vocab)} # +1 for lua
     ingr_vocab['</i>'] = 1
 
-with open('../data/recipe1M/classes_foodcom.pkl', 'rb') as f:
+with open('data/classes_foodcom.pkl', 'rb') as f:
     class_dict = pickle.load(f)
     # id2class label (9: 8 + 1)
     id2class = pickle.load(f)
     print(len(class_dict), id2class)
 
-with open('../data/recipe1M/triplet_sample.txt') as sample:
+with open('data/triplet_sample.txt') as sample:
     sample_ids = []
     sample = sample.read().strip().split('\n')
     for item in sample:

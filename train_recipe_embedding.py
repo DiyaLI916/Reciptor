@@ -53,8 +53,6 @@ def main():
     # print('cuda current device', torch.cuda.current_device())
 
     # define loss function (criterion) and optimizer
-    # cosine similarity between embeddings -> input1, input2, target
-    ## ref: https://pytorch.org/docs/stable/nn.html
     cosine_crit = nn.CosineEmbeddingLoss(0.05, reduction='sum').to(device)
 
     if opts.triplet_loss:
