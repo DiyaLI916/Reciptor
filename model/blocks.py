@@ -134,6 +134,4 @@ class PoolingMultiheadAttention(nn.Module):
         output = self.mab(s, z)
         # print('PoolingMultiheadAttention', output.shape)
 
-        # note that in the original paper
-        # they return mab(s, rff(z))
         return output

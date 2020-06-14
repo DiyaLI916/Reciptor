@@ -111,17 +111,17 @@ st_ptr = 0
 numfailed = 0
 
 # if exist, remove the directory
-if os.path.isdir('../data/train_foodcom_sample_lmdb'):
-    shutil.rmtree('../data/train_foodcom_sample_lmdb')
-if os.path.isdir('../data/val_foodcom_sample_lmdb'):
-    shutil.rmtree('../data/val_foodcom_sample_lmdb')
-if os.path.isdir('../data/test_foodcom_sample_lmdb'):
-    shutil.rmtree('../data/test_foodcom_sample_lmdb')
+if os.path.isdir('data/train_foodcom_sample_lmdb'):
+    shutil.rmtree('data/train_foodcom_sample_lmdb')
+if os.path.isdir('data/val_foodcom_sample_lmdb'):
+    shutil.rmtree('data/val_foodcom_sample_lmdb')
+if os.path.isdir('data/test_foodcom_sample_lmdb'):
+    shutil.rmtree('data/test_foodcom_sample_lmdb')
 
 env = {'train': [], 'val': [], 'test': []}
-env['train'] = lmdb.open('../data/train_foodcom_sample_lmdb', map_size=int(1e11))
-env['val']   = lmdb.open('../data/val_foodcom_sample_lmdb', map_size=int(1e11))
-env['test']  = lmdb.open('../data/test_foodcom_sample_lmdb', map_size=int(1e11))
+env['train'] = lmdb.open('data/train_foodcom_sample_lmdb', map_size=int(1e11))
+env['val']   = lmdb.open('data/val_foodcom_sample_lmdb', map_size=int(1e11))
+env['test']  = lmdb.open('data/test_foodcom_sample_lmdb', map_size=int(1e11))
 
 print('Assembling dataset.')
 img_ids = dict()
@@ -149,10 +149,6 @@ for i, entry in tqdm(enumerate(dataset)):
         if maxlen_temp > maxlength:
             maxlength = maxlen_temp
 
-        # clean data::: filter recipe have larger than 20 instructions steps / > 20 ingredients
-        # if ninstrs >= opts.maxlen or ningrs >= opts.maxlen or ningrs == 0 or remove_ids.get(entry['id']):
-        #     continue
-
         ingr_vec = np.zeros((opts.maxlen), dtype='uint16')
         ingr_vec[:ningrs] = ingr_detections
         # print('ingr_vec', ingr_vec)
@@ -178,7 +174,7 @@ for i, entry in tqdm(enumerate(dataset)):
 
 print('maxlength', maxlength)
 for k in keys.keys():
-    with open('../data/{}_foodcom_sample_keys.pkl'.format(k), 'wb') as f:
+    with open('data/{}_foodcom_sample_keys.pkl'.format(k), 'wb') as f:
         pickle.dump(keys[k], f)
 
 print('Training samples: %d - Validation samples: %d - Testing samples: %d' % (len(keys['train']),len(keys['val']),len(keys['test'])))

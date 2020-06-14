@@ -2,7 +2,7 @@
 
 python test_embed.py \
 --batch_size=300 \
---epochs=4 \
+--epochs=50 \
 --valfreq=2 \
 --full_data_path='foodcom_sample' \
 --pretrained_embed_path='tuned_embed/saved_tuned_embedding_path.pkl' \

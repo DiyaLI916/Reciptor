@@ -1,6 +1,5 @@
 import os
 import time
-import random
 import numpy as np
 import torch
 import torch.nn as nn
@@ -43,14 +42,6 @@ def main():
         raise Exception('please specify a model type [reciptor|jm|sjm]')
 
     model.to(device)
-
-    # .module problem
-    # if torch.cuda.device_count() > 1:
-    #     print("Let's use", torch.cuda.device_count(), "GPUs!")
-    #     # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
-    #     model = nn.DataParallel(model, device_ids=[1, 2, 3]).cuda()
-
-    # print('cuda current device', torch.cuda.current_device())
 
     # define loss function (criterion) and optimizer
     cosine_crit = nn.CosineEmbeddingLoss(0.05, reduction='sum').to(device)
@@ -157,9 +148,6 @@ def train(train_loader, model, criterion, optimizer, epoch):
     if opts.triplet_loss:
         tri_losses = AverageMeter()
 
-    # if opts.semantic_reg:
-    #     rec_losses = AverageMeter()
-
     # switch to train mode
     model.train()
     end = time.time()
@@ -167,8 +155,6 @@ def train(train_loader, model, criterion, optimizer, epoch):
     for i, (input, target) in enumerate(train_loader):
         # measure data loading time
         data_time.update(time.time() - end)
-        # print('check foodcom input', target[0], target[2][:10])
-        # exit()
 
         input_var = list()
         for j in range(len(input)):
@@ -182,13 +168,6 @@ def train(train_loader, model, criterion, optimizer, epoch):
         output = model(input_var[0], input_var[1], input_var[2], input_var[3])
         [skip_emb, ingre_emb] = output
         # print('output', output)
-
-        if i % 10 == 0:
-            cos = nn.CosineSimilarity(dim=1, eps=1e-6)
-            output = cos(skip_emb[:8, :], skip_emb[8:16, :])
-            print('skip_emb[:8, :], skip_emb[8:16, :]\n', output.cpu().data)
-            output = cos(ingre_emb[:8, :], ingre_emb[8:16, :])
-            print('ingre_emb[:8, :], ingre_emb[8:16, :]\n', output.cpu().data)
 
         if opts.triplet_loss:
             anchor_batch = ingre_emb[0::3, :]
@@ -204,7 +183,6 @@ def train(train_loader, model, criterion, optimizer, epoch):
             # combined loss
             loss = (1 - opts.tri_weight) * cos_loss + opts.tri_weight * tri_loss * 3
             # print('total loss', loss.data)
-            # exit()
 
             # measure performance and record losses
             cos_losses.update(cos_loss.data, input[0].size(0))
@@ -253,12 +231,9 @@ def write2tensorboard(data_loader, model):
         input_var = list()
         for j in range(len(input)):
             input_var.append(input[j].to(device))
-        # print(target)
-        # exit()
 
         # compute output
         output = model(input_var[0], input_var[1], input_var[2], input_var[3])
-        # now: [skip_emb, ingre_emb, ingre_sem]
 
         # [target, rec_class, rec_id]
         if i == 0:
@@ -272,12 +247,12 @@ def write2tensorboard(data_loader, model):
             id = np.concatenate((id, target[-1]), axis=0)
             recipe_class = np.concatenate((recipe_class, target[-2]), axis=0)
 
-    with open('tuned_embed/new2_{}_{}_tuned_emb.pkl'.format(opts.model_type, id.size), 'wb') as f:
+    with open('tuned_embed/{}_{}_tuned_emb.pkl'.format(opts.model_type, id.size), 'wb') as f:
         pickle.dump(skip_emb, f)
         pickle.dump(ingre_emb, f)
         pickle.dump(id, f)
         pickle.dump(recipe_class, f)
-        print('created tuned_embed/new2_{}_{}_tuned_emb.pkl'.format(opts.model_type, id.size))
+        print('created tuned_embed/{}_{}_tuned_emb.pkl'.format(opts.model_type, id.size))
     return 0
 
 def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):

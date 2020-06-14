@@ -174,7 +174,7 @@ class SetTransformer(nn.Module):
         d = in_dimension
         m = 16  # number of inducing points
         h = 4  # number of heads
-        k = 2  # number of seed vectors ???
+        k = 2  # number of seed vectors
 
         self.encoder = nn.Sequential(
             InducedSetAttentionBlock(d, m, h, RFF(d), RFF(d)),
@@ -213,33 +213,19 @@ class SetTransformer(nn.Module):
         """
         x = self.embs(x) # shape [b, n, d]
 
-        # print(x, x[1, 1, :].sum(), x[1, 2, :].sum(), x[3, 1, :].sum())
-        cos = nn.CosineSimilarity(dim=1, eps=1e-6)
-        # exit()
-
         # sort sequence according to the length
         sorted_len, sorted_idx = sq_lengths.sort(0, descending=True)
-        # batch_max_len = sorted_len.cpu().numpy()[0]
-        batch_min_len = sorted_len.cpu().numpy()[0]
+        batch_max_len = sorted_len.cpu().numpy()[0]
 
-        cut_x = x[:, :batch_min_len, :]
-        # print(cut_x, cut_x.shape)
-        # output = cos(cut_x[1, :, :], cut_x[99, :, :])
-        # print('embed ingre cutted', output.cpu().data)
+        cut_x = x[:, :batch_max_len, :]
 
         x = self.encoder(cut_x)  # shape [batch, batch_max_len, d]
         x = self.decoder(x)  # shape [batch, k, d]
 
         b, k, d = x.shape
         x = x.view(b, k * d)
-        # print(x.shape)
-        # output = cos(x[:8, :], x[70:78, :])
-        # print('decoded viewed ingre cutted', output.cpu().data)
 
         y = self.predictor(x)
-        # output = cos(y[:8, :], y[70:78, :])
-        # print('y', output.cpu().data)
-        # exit()
         return y
 
 class Reciptor(nn.Module):

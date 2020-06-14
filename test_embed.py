@@ -202,13 +202,6 @@ def evaluate(eval_loader, model, criterion):
     print('Loss {loss.val:.4f} ({loss.avg:.4f})\t'.format(loss=class_eval_losses))
     print(result)
 
-    # output_eval_file = os.path.join(args.eval_output_dir, "eval_results.txt")
-    # with open(output_eval_file, "w") as writer:
-    #     logger.info("***** Eval results on Label Prediction *****")
-    #     for key in sorted(result.keys()):
-    #         logger.info(" %s = %s", key, str(result[key]))
-    #         writer.write("%s = %s\n" % (key, str(result[key])))
-
     return result
 
 def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
