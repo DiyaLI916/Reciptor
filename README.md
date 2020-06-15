@@ -20,7 +20,8 @@ from the original [recipe1M](http://im2recipe.csail.mit.edu/dataset/download/) a
 * `data/foodcom_dataset.json` from [foodcom_datatset.json](https://drive.google.com/file/d/10DdbPjDYjcY-uFXGAFv9hBHqYyroFW8p/view?usp=sharing)
 
 ## Download preprocessed data
-Alternatively, you can download our preprocessed data from [reciptor_data](https://drive.google.com/drive/folders/19isPZOMiBA-hA4WoTJbjhX1SmYmgmUZA?usp=sharing)
+Alternatively, you can download our preprocessed sample data from [reciptor_data](https://drive.google.com/drive/folders/19isPZOMiBA-hA4WoTJbjhX1SmYmgmUZA?usp=sharing) 
+and the full data from [zenodo](https://doi.org/10.5281/zenodo.3894040).
 
 # Model
 To run the recipe representation model:
