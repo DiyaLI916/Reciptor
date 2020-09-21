@@ -31,7 +31,7 @@ def get_parser():
 
     ##
     parser.add_argument('--triplet_loss', action="store_true", default=False)
-    parser.add_argument('--triplet_path', default='data/recipe1M/triplet_sample.txt', type=str)
+    parser.add_argument('--triplet_path', default='data/triplet_sample.txt', type=str)
     parser.add_argument('--semantic_reg', default=False, type=bool)
     parser.add_argument('--category_cla', default=False, type=bool)
 
