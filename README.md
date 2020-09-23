@@ -21,7 +21,7 @@ from the original [recipe1M](http://im2recipe.csail.mit.edu/dataset/download/) a
 
 ## Download preprocessed data
 Alternatively, you can download our preprocessed sample data from [reciptor_data](https://drive.google.com/drive/folders/19isPZOMiBA-hA4WoTJbjhX1SmYmgmUZA?usp=sharing) 
-and the full data from [zenodo](https://doi.org/10.5281/zenodo.3894040).
+and the full data from [zenodo](https://doi.org/10.5281/zenodo.3894040) and unzip them under `data` directory.
 
 # Model
 To run the recipe representation model:
